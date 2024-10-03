@@ -1,0 +1,12 @@
+module Adder (
+    input [3:0] a,
+    input [3:0] b,
+    output [3:0] sum,
+    output carry_out
+);
+    wire [4:0] full_sum;  // 5 bits to handle carry
+
+    assign full_sum = a + b;
+    assign sum = full_sum[3:0];      // lower 4 bits are the sum
+    assign carry_out = full_sum[4];  // 5th bit is the carry-out
+endmodule
