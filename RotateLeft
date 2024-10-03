@@ -1,0 +1,29 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 03.10.2024 20:14:04
+// Design Name: 
+// Module Name: RotateLeft
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module RotateLeft (
+    input [3:0] a,
+    input [3:0] shamt,  // Shift amount
+    output [3:0] out
+);
+    assign out = (a << shamt) | (a >> (4 - shamt));  // Rotate left
+endmodule
