@@ -1,0 +1,7 @@
+module ShiftRight (
+    input [3:0] a,
+    input [3:0] shamt,  // Shift amount
+    output [3:0] out
+);
+    assign out = a >> shamt;  // Shift right by operand2
+endmodule
