@@ -1,0 +1,7 @@
+module RotateRight (
+    input [3:0] a,
+    input [3:0] shamt,  // Shift amount
+    output [3:0] out
+);
+    assign out = (a >> shamt) | (a << (4 - shamt));  // Rotate right
+endmodule
