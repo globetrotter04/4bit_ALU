@@ -1,4 +1,4 @@
-The following project contains the verilog code of a miniature 4-bit ALU
+The following project contains the verilog code of a miniature 4-bit ALU(arithmetic logic unit).
 A miniature 4-bit unsigned ALU which performs the following operations
 depending upon a 4-bit op-code “OP” :
 | OP  | Action |
