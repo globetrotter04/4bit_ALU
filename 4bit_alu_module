@@ -25,7 +25,7 @@ module ALU_4bit (
     input [3:0] operand2,
     input [3:0] OP,
     output reg [3:0] result,
-    output reg carry_out // Carry output for add operation
+    output reg carry_out,borrow // Carry output for add operation
 );
     // Wires for the outputs of each operation
     wire [3:0] add_res, sub_res, and_res, xor_res, or_res, two_comp_res, inv_res, shl_res, shr_res, rol_res, ror_res;
@@ -33,7 +33,8 @@ module ALU_4bit (
 
     // Instantiate each operation module
     Adder add_module (.a(operand1), .b(operand2), .sum(add_res), .carry_out(add_carry_out));
-    Subtractor sub_module (.a(operand1), .b(operand2), .diff(sub_res));
+    Subtractor sub_module (.A(operand1), .B(operand2), .D(sub_res), .B_out(res_borrow));
+    
     BitwiseAND and_module (.a(operand1), .b(operand2), .out(and_res));
     BitwiseXOR xor_module (.a(operand1), .b(operand2), .out(xor_res));
     BitwiseOR or_module (.a(operand1), .b(operand2), .out(or_res));
@@ -42,10 +43,11 @@ module ALU_4bit (
     ShiftLeft shl_module (.a(operand1), .shamt(operand2), .out(shl_res));
     ShiftRight shr_module (.a(operand1), .shamt(operand2), .out(shr_res));
     RotateLeft rol_module (.a(operand1), .shamt(operand2), .out(rol_res));
-    RotateRight ror_module (.a(operand1), .shamt(operand2), .out(ror_res));
+    RotateRight ror_module (.a(operand1), .shamt(operand2), .out(ror_res)); 
 
     always @(*) begin
         carry_out = 1'b0;  // Default carry_out is 0
+        borrow = 1'b0;
         case (OP)
             4'b0000: begin
                 result = 4'b0000;  // NOP (No Operation)
@@ -56,6 +58,7 @@ module ALU_4bit (
             end
             4'b0010: begin
                 result = sub_res;  // Subtract operation
+                borrow = res_borrow;
             end
             4'b0011: begin
                 result = and_res;  // Bitwise AND
