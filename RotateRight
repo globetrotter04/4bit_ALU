@@ -3,5 +3,9 @@ module RotateRight (
     input [3:0] shamt,  // Shift amount
     output [3:0] out
 );
-    assign out = (a >> shamt) | (a << (4 - shamt));  // Rotate right
+    wire [1:0] effective_shamt;
+    assign effective_shamt = shamt % 4;  // Get effective shift amount within 4 bits
+
+    // Rotate right by effective shift amount
+    assign out = (a >> effective_shamt) | (a << (4 - effective_shamt));
 endmodule
