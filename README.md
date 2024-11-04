@@ -11,7 +11,7 @@ depending upon a 4-bit op-code “OP” :
 | 0101  | Bit-wise OR the two operands  |
 | 0110  | Generates the 2s-complement of the operand1 |
 | 0111  | Bit-wise inverts the operand1  |
-| 1000  | Shift operand1 left by operand2 bits. (operand2 < 4)  |
-| 1001  | Shift operand1 right by operand2 bits. (operand2 < 4)  |
-| 1010  | Rotate operand1 left by operand2 bits. (operand2 < 4)  |
-| 1011  | Rotate operand1 right by operand2 bits. (operand2 < 4)  |
+| 1000  | Shift operand1 left by operand2 bits.   |
+| 1001  | Shift operand1 right by operand2 bits.   |
+| 1010  | Rotate operand1 left by operand2 bits.   |
+| 1011  | Rotate operand1 right by operand2 bits.   |
